@@ -1,4 +1,5 @@
 --Modelo de script para criação de view de quantidade de estoque atual
+--SQL Server--
 
 
 CREATE VIEW VW_ESTOQUE_ATUAL AS
