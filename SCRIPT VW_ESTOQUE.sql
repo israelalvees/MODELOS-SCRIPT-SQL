@@ -17,6 +17,7 @@ WHERE E.LOC_CODI = '001' --localização do estoque, permite filtrar por loja ou
 AND P.DPT_CODI = '001'  --departamento do produto
 AND P.PRO_SITU = 'A' --situação do produto, ativo ou inativo
 AND C.LOC_CODI = '001'
+--AND E.EST_QUAN > 0.00 --filtrar somente produtos que estão em estoque  
 GROUP BY P.PRO_CODI, P.PRO_DESC, E.EST_QUAN, P.FOR_CODI, P.SEC_CODI
 
 
