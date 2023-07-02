@@ -11,5 +11,4 @@
 <br>
 
 - Modelo de script para criação de view de quantidade de estoque atual.
-
 - Permitindo filtar por fornecedor, seção (tipo) produto, localização (sede), departamento, produto ativo ou inativo, produtos em estoque.
