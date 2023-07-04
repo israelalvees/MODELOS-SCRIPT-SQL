@@ -9,14 +9,11 @@
 ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
 </div>
 <br>
-<p align="center">
-<img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
-</p>
-<br>    
 
-- Script para calcular o tempo necessário para dar saída na quantidade atual em estoque.
-- Pode ser utilizado base para compras, tendo em vista o tempo desejado para que se de saída no produto.
-- Tempo de estoque calculado pela 'Quantidade em estoque atual' dividido pela 'Média de quantidade vendida de produtos por mês'.
+- Script SQL para calcular o tempo de estoque de produtos
+- Esta consulta retorna informações sobre produtos, incluindo o tempo estimado de estoque.
+- O tempo de estoque é calculado dividindo a quantidade disponível no estoque pela quantidade média vendida por semana no período desejado.
+- ROW_NUMBER() utilizado para atribuir um número sequencial a cada linha agrupada pelo código do produto (E.PRO_CODI). A cláusula PARTITION BY E.PRO_CODI garante que o número sequencial seja reiniciado para cada código de produto diferente.
 
 ## SCRIPT VW_ESTOQUE
 
