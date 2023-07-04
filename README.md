@@ -55,18 +55,13 @@
 - Primeiro foram feitas algumas pesquisas constantes nos selects para melhor entendimento dos dados constantes na tabela. Nesse caso não foi utilizado o comando sp_help, pois precisava vizualizar a forma que os dados estavam gravados.
 
 
-## SCRIPT QUESTÕES
+## SCRIPT CENÁRIOS DIA A DIA
 
 <div align="center">
 	
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white) 
 
 </div>
-<br>
-
-<p align="center">
-<img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
-</p>
 <br>
 
 - Scripts feitos para alguns casos concretos, focando na filtragem específica, buscando extrair informações mais exatas.
