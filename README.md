@@ -55,4 +55,16 @@
 
 - Scripts feitos para alguns casos concretos, focando na filtragem específica, buscando extrair informações mais exatas.
 
+## SCRIPT TEMPO DE ESTOQUE
+
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+<p align="center">
+<img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
+</p>
+<br>
+
   
