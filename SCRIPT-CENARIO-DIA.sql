@@ -1,4 +1,4 @@
---QUESTÃO 1
+--CENARIO 1
 --Apresente a query para listar o código e o nome do vendedor com maior número de vendas (contagem), e que estas vendas estejam com o status concluída. As colunas presentes no 
 --resultado devem ser, portanto, codigovendedor (cdvdd) e nomevendedor (nmvdd).
 
@@ -11,7 +11,7 @@ GROUP BY v.codigovendedor , c.nomevendedor
 ORDER BY COUNT(*) DESC
 LIMIT 1
 
---QUESTÃO 2
+--CENARIO 2
 --Apresente a query para listar o código e nome do produto mais vendido entre as datas de 2014-02-03 até 2018-02-02. As colunas presentes no resultado 
 --devem ser codigoproduto (cdpro) e nomeproduto (nmpro).
 
@@ -27,7 +27,7 @@ GROUP BY v.codigoproduto , p.nomeproduto, v.quantidadevendas
 ORDER BY SUM(v.quantidadevendas) DESC
 LIMIT 1
 
---QUESTAO 3
+--CENARIO 3
 --Apresente a query para listar o código e nome cliente com maior gasto na loja. As colunas presentes no resultado devem ser codigocliente (cdcli), 
 --nomecliente (nmcli) e gasto, esta última representando o somatório das vendas atribuídas ao cliente.
 
@@ -41,7 +41,7 @@ GROUP BY v.codigocliente , c.nomecliente
 ORDER BY gasto DESC
 LIMIT 1
 
---QUESTÃO 4
+--CENARIO 4
 --Apresente a query para listar código, nome e data de nascimento dos dependentes do vendedor
 --com menor valor total bruto em vendas (não sendo zero). As colunas presentes no resultado
 --devem ser codigodependente (cddep), nomedependente (nmdep), datanascimento (dtnasc).	
@@ -60,7 +60,7 @@ GROUP BY d.codigodependente,
 ORDER BY v.quantidadevendas * v.valorunitariovenda ASC
 LIMIT 1		
 
---QUESTÃO 5
+--CENARIO 5
 --Apresente a query para listar os 3 produtos menos vendidos pelos canais de E-Commerce ou
 --Matriz. As colunas presentes no resultado devem ser canalvendas (canal), codigoproduto
 --(cdpro), nomeproduto (nmpro) e quantidade_vendas.
@@ -82,7 +82,7 @@ GROUP BY v.codigoproduto , p.nomeproduto, v.quantidadevendas, v.codigocanal
 ORDER BY v.quantidadevendas ASC
 LIMIT 3
 
---QUESTÃO 6
+--CENARIO 6
 --Apresente a query para listar o gasto médio por estado da federação. As colunas presentes no
 --resultado devem ser estado e gastomedio. Considere apresentar a coluna gastomedio
 --arredondada na segunda casa decimal.	
@@ -95,7 +95,7 @@ WHERE v.codigostatusvenda = '1'
 GROUP BY c.estadocliente
 ORDER BY gastomedio DESC
 
---QUESTÃO 7
+--CENARIO 7
 --Apresente a query para listar o código das vendas (cdven) identificadas como deletadas.
 --Apresente o resultado em ordem crescente.
 
@@ -106,7 +106,7 @@ FROM dw.fato_vendas v
 WHERE v.deletado = '1'
 ORDER BY v.codigovenda ASC
 
---QUESTÃO 8
+--CENARIO 8
 --Apresente a query para listar a quantidade média vendida de cada produto agrupado por estado
 --da federação. As colunas presentes no resultado devem ser estado e nomeproduto (nmprod) e
 --quantidade_media. Considere arredondar o valor da coluna quantidade_media na quarta casa
@@ -122,7 +122,7 @@ WHERE v.codigostatusvenda = '1'
 GROUP BY c.estadocliente, p.nomeproduto
 ORDER BY c.estadocliente, p.nomeproduto
 
---QUESTÃO 9
+--CENARIO 9
 --Calcule a receita bruta por ano.
 
 SELECT 	d.ano,
@@ -132,7 +132,7 @@ INNER JOIN dw.dim_data d ON v.datavenda = d.data
 GROUP BY d.ano
 ORDER BY d.ano ASC
 
---QUESTÃO 10
+--CENARIO 10
 --Calcule a receita bruta por ano e por estado.
 
 
@@ -149,7 +149,7 @@ WHERE v.codigostatusvenda = '1'
 GROUP BY d.ano, c.estadocliente
 ORDER BY d.ano ASC
 
---QUESTÃO 11 
+--CENARIO 11 
 --Proponha um indicador.
 	
 --indicador apresenta classificação por vendedor, constando produtos vendidos, quantidade de itens e valor total deles
@@ -191,7 +191,7 @@ FROM (
 WHERE rn = 1
 ORDER BY codigovendedor ASC, valortotalproduto DESC, quantidadevendidaproduto DESC
 
---QUESTÃO 13
+--CENARIO 12
 --Mostre o nome do vendedor, sem espaço na frente, e a quantidade de dependentes (usando subselect)
 
 
@@ -219,7 +219,7 @@ WHERE v.codigovendedor IN (SELECT codigovendedor FROM dw.dim_dependente)
 ORDER BY v.codigovendedor ASC
 
 
---QUESTAO EXTRA
+--CENARIO 13
 --A comissão de um vendedor é definida a partir de um percentual sobre o total de vendas (quantidade * valor unitário) por ele realizado.
 --O percentual de comissão de cada vendedor está armazenado na coluna perccomissao, tabela dim_vendedor.
 --Com base em tais informações, calcule a comissão de todos os vendedores, considerando todas as vendas armazenadas na base de dados.
