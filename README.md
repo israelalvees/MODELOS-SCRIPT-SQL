@@ -64,5 +64,22 @@
 - Scripts feitos para alguns casos concretos, focando na filtragem específica, buscando extrair informações mais exatas.
 
 
+## SCRIPT VENDA E BONIFICAÇÃO
+
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+- Este script SQL é destinado a recuperar dados de faturamento com base em determinados critérios de filtro. Ele retorna as quantidades de venda e bonificação, bem como os valores totais de venda e bonificação para um determinado período e produto.
+- Filtra os dados com base nos seguintes critérios:
+	- FOR_CODI = 'XXX' (código específico).
+	- LOCALIZACAO = 'XXX' (localização específica).
+	- DATA entre 'XX/XX/XXXX' e 'XX/XX/XXXX' (período específico).
+	- NATUREZA igual a 'VEN' (venda) e 'BOV' (bonificação).
+	- CODIGO_PRODUTO igual a 'XXXX' (produto específico).
+
+
 
   
