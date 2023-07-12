@@ -1,4 +1,4 @@
-
+--TEMPO DE ESTOQUE EM MESES
 SELECT CODIGO_PRODUTO, DESCRICAO, ESTOQUE_ATUAL, TEMPO_ESTOQUE, FORNECEDOR, SECAO, QUANTIDADE_VENDIDA
 FROM (
     -- Subconsulta para realizar o cálculo do tempo de estoque 
@@ -28,6 +28,44 @@ FROM (
         GROUP BY CODIGO_PRODUTO
     ) F ON E.PRO_CODI = F.CODIGO_PRODUTO
     WHERE P.FOR_CODI = '00940' --filtro por fornecedor específico
+) T
+WHERE RowNum = 1
+ORDER BY DESCRICAO, TEMPO_ESTOQUE;
+
+
+--TEMPO DE ESTOQUE EM DIAS
+SELECT CODIGO_PRODUTO, DESCRICAO, ESTOQUE_ATUAL, TEMPO_ESTOQUE, FORNECEDOR, SECAO, QUANTIDADE_VENDIDA
+FROM (
+    -- Subconsulta para realizar o cálculo do tempo de estoque 
+    SELECT E.PRO_CODI AS CODIGO_PRODUTO,
+           P.PRO_DESC AS DESCRICAO,
+           E.EST_QUAN AS ESTOQUE_ATUAL,
+           CASE 
+               WHEN F.SUM_QUANTIDADE = 0 THEN NULL 
+               ELSE ROUND(E.EST_QUAN / (F.SUM_QUANTIDADE / 6), 0) 
+           END AS TEMPO_ESTOQUE,
+           P.FOR_CODI AS FORNECEDOR,
+           P.SEC_CODI AS SECAO,
+           (
+               SELECT SUM(QUANTIDADE) 
+               FROM VW_FATURAMENTO_DETALHADO 
+               WHERE CODIGO_PRODUTO = E.PRO_CODI 
+                     AND LOCALIZACAO = '002'
+                     AND CONVERT(DATE, DATA, 103) BETWEEN '2023-07-03' AND '2023-07-08'
+           ) AS QUANTIDADE_VENDIDA,
+           ROW_NUMBER() OVER (PARTITION BY E.PRO_CODI ORDER BY E.PRO_CODI) AS RowNum
+    FROM ESTOQUE E
+    INNER JOIN PRODUTO P ON E.PRO_CODI = P.PRO_CODI
+    INNER JOIN (
+        -- Subconsulta para calcular a quantidade vendida para cada produto no período desejado e localização 002
+        SELECT CODIGO_PRODUTO, SUM(QUANTIDADE) AS SUM_QUANTIDADE
+        FROM VW_FATURAMENTO_DETALHADO
+        WHERE CONVERT(DATE, DATA, 103) BETWEEN '2023-07-03' AND '2023-07-08'
+        AND LOCALIZACAO = '002'
+        GROUP BY CODIGO_PRODUTO
+    ) F ON E.PRO_CODI = F.CODIGO_PRODUTO
+    WHERE P.FOR_CODI = '00116' --filtro por fornecedor específico
+    AND E.LOC_CODI = '002'
 ) T
 WHERE RowNum = 1
 ORDER BY DESCRICAO, TEMPO_ESTOQUE;
