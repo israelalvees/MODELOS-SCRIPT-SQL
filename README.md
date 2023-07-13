@@ -81,5 +81,12 @@
 	- CODIGO_PRODUTO igual a 'XXXX' (produto específico).
 
 
+## SCRIPT BASE CLIENTES VENDEDOR
 
-  
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+- Destinado a retornar todos os clientes que constam na base de um vendedor (VEN_CODI) que também constam na base de outro vendedor com outro código distinto.
