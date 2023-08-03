@@ -103,3 +103,14 @@
 - Destinado a alterar a relação entre vendedor/fornecedor de uma tabela.
 
 
+## SCRIPT INSERT COPY
+
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+- Usado para inserir dados em uma tabela, copiando as informações de um código de vendedor para outro, sem necessidade de inserir linha a linha. 
+
+
