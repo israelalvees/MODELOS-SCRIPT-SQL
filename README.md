@@ -33,7 +33,15 @@
 <br>
 
 - Modelo de script para criação de view de quantidade de estoque atual.
-- Permitindo filtar por fornecedor, seção (tipo) produto, localização (sede), departamento, produto ativo ou inativo, produtos em estoque.
+- Documentação das colunas mencionadas no script:
+
+	- P.PRO_CODI: Código do produto. (Tabela PRODUTO)
+	- P.PRO_DESC: Descrição do produto. (Tabela PRODUTO)
+	- E.EST_QUAN: Quantidade atual em estoque do produto. (Tabela ESTOQUE)
+	- P.FOR_CODI: Código do fornecedor do produto. (Tabela PRODUTO)
+	- P.SEC_CODI: Código da seção ou tipo de produto. (Tabela PRODUTO)
+
+- As colunas estão sendo selecionadas no comando SELECT e associadas a apelidos (aliases) P, E e C para representar as tabelas PRODUTO, ESTOQUE e TBCUSTOMATE, respectivamente. Elas são utilizadas para compor o resultado final da consulta, que retornará informações sobre os produtos em estoque. As tabelas relacionadas são ESTOQUE (E) através da chave PRO_CODI, PRODUTO (P) através das chaves PRO_CODI e FOR_CODI, FORNECEDOR (F) através da chave FOR_CODI e TBCUSTOMATE (C) através da chave MAT_CODI.
 
 
 ## SCRIPT VALOR TOTAL VENDIDO
