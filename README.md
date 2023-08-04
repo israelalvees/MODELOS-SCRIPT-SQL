@@ -14,7 +14,7 @@
 - Esta consulta retorna informações sobre produtos, incluindo o tempo estimado de estoque.
 - O tempo de estoque é calculado dividindo a quantidade disponível no estoque pela quantidade média vendida por semana no período desejado.
 - ROW_NUMBER() utilizado para atribuir um número sequencial a cada linha agrupada pelo código do produto (E.PRO_CODI). A cláusula PARTITION BY E.PRO_CODI garante que o número sequencial seja reiniciado para cada código de produto diferente.
-- Campos constantes no script:
+- Documentação:
 	- CODIGO_PRODUTO: Código do produto presente na tabela ESTOQUE e PRODUTO.
 	- DESCRICAO: Descrição do produto, presente na tabela PRODUTO.
 	- ESTOQUE_ATUAL: Quantidade atual em estoque do produto, presente na tabela ESTOQUE.
@@ -33,7 +33,7 @@
 <br>
 
 - Modelo de script para criação de view de quantidade de estoque atual.
-- Documentação das colunas mencionadas no script:
+- Documentação:
 
 	- P.PRO_CODI: Código do produto. (Tabela PRODUTO)
 	- P.PRO_DESC: Descrição do produto. (Tabela PRODUTO)
@@ -54,7 +54,7 @@
 
 - Modelo de script para visualização do valor total faturado por dias específicos.
 - Comando sp_help extramamente útil, principalmente em caso de tabelas com muitos dados, para retornar somente as colunas constantes em uma tabela, sem valores.
-- Documentação das colunas constantes no script:
+- Documentação:
 
 	- SUM([Valor (preço)]): Essa coluna representa o valor total, calculado como a soma dos valores de preço presentes na coluna "Valor (preço)" da tabela VW_LABORATORIO. O alias "valor_total" é usado para identificar essa coluna no resultado da consulta.
 
@@ -128,7 +128,7 @@
 <br>
 
 - Destinado a retornar todos os clientes que constam na base de um vendedor (VEN_CODI) que também constam na base de outro vendedor com outro código distinto.
-- Documentação das colunas no script:
+- Documentação:
 
 	- VEN_CODI: Código do vendedor, presente na tabela VENDEDOR.
 	- CLI_CODI: Código do cliente, presente na tabela TBCLIENTE_VENDEDOR.
