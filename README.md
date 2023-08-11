@@ -183,18 +183,21 @@
 ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
 </div>
 <br>
-
-- `DESCRICAO_PRODUTO`: Esta coluna contém as descrições dos produtos presentes na tabela `ESTOQUE`, ou seja, fornece informações sobre o nome ou título dos produtos.
-
-- `PRO_NCM`: Essa coluna corresponde ao NCM (Nomenclatura Comum do Mercosul) dos produtos da tabela `PRODUTO`. O NCM é um código numérico utilizado para classificar mercadorias, facilitando o comércio internacional.
-
-- `P.PRO_CODI`: Este é o código do produto na tabela `PRODUTO`. Ele é usado como chave para relacionar as tabelas `ESTOQUE` e `PRODUTO`.
-
-- `E.CODIGO_PRODUTO`: Esse é o código do produto na tabela `ESTOQUE`. É a outra parte da chave de relação entre as tabelas `ESTOQUE` e `PRODUTO`.
-
-- `P.PRO_SITU`: Este é o status do produto na tabela `PRODUTO`. A condição `PRO_SITU = 'A'` seleciona apenas produtos ativos.
-
-- `P.SEC_CODI`: Essa coluna representa o código da seção à qual o produto pertence, na tabela `PRODUTO`. A condição `P.SEC_CODI = 009` filtra produtos que pertencem à seção com código `009`.
-
 - Em resumo, a VIEW `VW_PRODUTO_NCM` exibe as descrições e os códigos NCM dos produtos ativos pertencentes à seção de código `009`, relacionando informações das tabelas `ESTOQUE` e `PRODUTO` com base em suas chaves de relação e critérios de filtro específicos.
+
+- Documentação: 
+
+	- `DESCRICAO_PRODUTO`: Esta coluna contém as descrições dos produtos presentes na tabela `ESTOQUE`, ou seja, fornece informações sobre o nome ou título dos produtos.
+
+	- `PRO_NCM`: Essa coluna corresponde ao NCM (Nomenclatura Comum do Mercosul) dos produtos da tabela `PRODUTO`. O NCM é um código numérico utilizado para classificar mercadorias, facilitando o comércio internacional.
+
+	- `P.PRO_CODI`: Este é o código do produto na tabela `PRODUTO`. Ele é usado como chave para relacionar as tabelas `ESTOQUE` e `PRODUTO`.
+
+	- `E.CODIGO_PRODUTO`: Esse é o código do produto na tabela `ESTOQUE`. É a outra parte da chave de relação entre as tabelas `ESTOQUE` e `PRODUTO`.
+
+	- `P.PRO_SITU`: Este é o status do produto na tabela `PRODUTO`. A condição `PRO_SITU = 'A'` seleciona apenas produtos ativos.
+
+	- `P.SEC_CODI`: Essa coluna representa o código da seção à qual o produto pertence, na tabela `PRODUTO`. A condição `P.SEC_CODI = 009` filtra produtos que pertencem à seção com código `009`.
+
+
 
