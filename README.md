@@ -183,6 +183,7 @@
 ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
 </div>
 <br>
+
 - Em resumo, a VIEW `VW_PRODUTO_NCM` exibe as descrições e os códigos NCM dos produtos ativos pertencentes à seção de código `009`, relacionando informações das tabelas `ESTOQUE` e `PRODUTO` com base em suas chaves de relação e critérios de filtro específicos.
 
 - Documentação: 
