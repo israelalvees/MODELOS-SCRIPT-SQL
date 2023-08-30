@@ -24,6 +24,47 @@
 	- QUANTIDADE_VENDIDA: Quantidade total vendida do produto no período selecionado ('2023-01-01' a '2023-06-30'), calculada na subconsulta externa.
 	- RowNum: Número de linha usado para selecionar apenas o primeiro registro de cada produto.
 
+## SCRIPT GIRO ESTOQUE VALOR
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+### Documentação: 
+
+Este script SQL é projetado para recuperar informações sobre produtos, seus níveis de estoque e atividade de vendas durante um determinado período. Ele utiliza funções agregadas e subconsultas para calcular e apresentar as informações relevantes em relação aos produtos.
+
+#### Colunas Selecionadas
+
+1. **PRO_CODI**: O código único que identifica cada produto.
+2. **PRO_DESC**: A descrição do produto.
+3. **GIRO_FEV_JUL**: O total de quantidades vendidas para o produto durante o período de 01/02/2023 a 31/07/2023, obtido por meio de uma subconsulta.
+4. **EST_QUAN**: A quantidade disponível do produto em estoque.
+5. **ESTOQUE_VALOR**: O valor total do estoque do produto, calculado multiplicando o preço unitário do produto (`TAB_PRC1`) pela quantidade em estoque.
+
+#### Funcionalidades das Funções Agregadas
+
+1. **SUM(VP.TAB_PRC1 * E.EST_QUAN)**: Esta função de agregação calcula o valor total do estoque para cada produto, multiplicando o preço unitário do produto (`TAB_PRC1`) pela quantidade em estoque (`EST_QUAN`). A cláusula `HAVING` filtra os produtos cujo valor de estoque seja maior que zero.
+
+#### Subconsulta para GIRO_FEV_JUL
+
+A subconsulta é usada para calcular o total de quantidades vendidas (`QUANTIDADE`) para cada produto durante o período de 01/02/2023 a 31/07/2023 na tabela `VW_FATURAMENTO_DETALHADO`. A subconsulta é correlacionada com a tabela principal `PRODUTO` através da condição `FD.PRODUTO_ID = P.PRO_CODI`.
+
+#### Join e Filtros
+
+- **INNER JOIN ESTOQUE E**: Junta a tabela `ESTOQUE` com a tabela `PRODUTO` usando o campo `PRO_CODI` como chave de junção.
+- **INNER JOIN TBVENDAPRO VP**: Junta a tabela `TBVENDAPRO` com a tabela `PRODUTO` usando o campo `PRO_CODI` como chave de junção.
+- **WHERE P.FOR_CODI = 940**: Filtra os produtos associados ao fornecedor com código 940.
+
+#### Agrupamento e Ordenação
+
+O resultado é agrupado por `PRO_CODI`, `PRO_DESC`, `EST_QUAN` e `VP.TAB_PRC1`. Isso é necessário porque estamos usando funções agregadas (`SUM`) e o campo `ESTOQUE_VALOR` no `SELECT`.
+
+### Considerações Finais
+
+Este script fornece uma visão detalhada da atividade de vendas e dos níveis de estoque para produtos associados ao fornecedor com código 940. Certifique-se de ajustar os nomes das tabelas e campos de acordo com o seu esquema de banco de dados específico.
+
 ## SCRIPT VW_ESTOQUE
 
 <div align="center">
