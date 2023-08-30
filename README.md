@@ -61,10 +61,6 @@ A subconsulta é usada para calcular o total de quantidades vendidas (`QUANTIDAD
 
 O resultado é agrupado por `PRO_CODI`, `PRO_DESC`, `EST_QUAN` e `VP.TAB_PRC1`. Isso é necessário porque estamos usando funções agregadas (`SUM`) e o campo `ESTOQUE_VALOR` no `SELECT`.
 
-### Considerações Finais
-
-Este script fornece uma visão detalhada da atividade de vendas e dos níveis de estoque para produtos associados ao fornecedor com código 940. Certifique-se de ajustar os nomes das tabelas e campos de acordo com o seu esquema de banco de dados específico.
-
 ## SCRIPT VW_ESTOQUE
 
 <div align="center">
