@@ -69,34 +69,23 @@ O resultado é agrupado por `PRO_CODI`, `PRO_DESC`, `EST_QUAN` e `VP.TAB_PRC1`. 
 </div>
 <br>
 
-## Propósito da Consulta
+### Propósito da Consulta
 
 O objetivo desta consulta SQL é calcular e agregar várias métricas para produtos vendidos em uma localização específica e com uma natureza de vendas específica. As principais métricas incluem a quantidade total de produtos vendidos dentro de um intervalo de datas específico, bem como a média de quantidade vendida nos últimos três meses antes de uma data especificada.
 
-## Campos da Consulta
+- `CODIGO_PRODUTO`: Código único de identificação do produto.
 
-A consulta inclui os seguintes campos no conjunto de resultados:
+- `PRODUTO`: Nome ou descrição do produto.
 
-- `CODIGO_PRODUTO`: O identificador único do produto.
-- `PRODUTO`: O nome ou descrição do produto.
-- `QUANTIDADE`: A quantidade total do produto vendido dentro do intervalo de datas especificado, de 1 de setembro de 2023 a 30 de setembro de 2023.
-- `MEDIA_ULTIMO_TRIMESTRE`: A média da quantidade do produto vendida nos três meses anteriores ao intervalo de datas de 1 de junho de 2023 a 31 de agosto de 2023.
-- `FOR_CODI`: O identificador único do fornecedor do produto.
-- `FORNECEDOR`: O nome ou descrição do fornecedor.
+- `QUANTIDADE`: Soma das quantidades de produtos vendidos durante o mês de setembro de 2023.
 
-## Lógica da Consulta
+- `MEDIA_ULTIMO_TRIMESTRE`: Média das quantidades de produtos vendidos nos últimos três meses (junho, julho e agosto de 2023) para cada produto. O resultado é convertido para um valor inteiro (INT).
 
-- A expressão `SUM(CASE ... END)` calcula a quantidade total de produtos vendidos (`QUANTIDADE`) dentro do intervalo de datas especificado (de 1 de setembro de 2023 a 30 de setembro de 2023).
-- A subconsulta calcula a soma das quantidades vendidas nos três meses de 1 de junho de 2023 a 31 de agosto de 2023 e armazena esse valor como `MEDIA_ULTIMO_TRIMESTRE`. Essa subconsulta está correlacionada com a consulta principal por meio da correspondência do `CODIGO_PRODUTO`.
-- A consulta filtra os dados com base nas seguintes condições:
-  - `LOCALIZACAO` é igual a '001'.
-  - `NATUREZA` é 'VEN' ou 'BOV'.
-- Os resultados são agrupados por `CODIGO_PRODUTO`, `PRODUTO`, `FOR_CODI`, `FORNECEDOR`.
+- `FOR_CODI`: Código do fornecedor relacionado ao produto.
 
-Esta consulta fornece informações valiosas sobre as vendas de produtos em uma localização específica e natureza de vendas, permitindo análise das quantidades vendidas e das vendas médias ao longo do tempo.
+- `FORNECEDOR`: Nome ou descrição do fornecedor relacionado ao produto.
 
-Observe que a consulta assume formatos de data específicos ('dd/mm/yyyy') e pode exigir ajustes com base nas configurações de formato de data do seu banco de dados.
-
+A cláusula `WHERE` da consulta filtra os resultados para incluir apenas registros onde a `LOCALIZACAO` é '001', o `FOR_CODI` é 940 e a `NATUREZA` é 'VEN'. A consulta também usa a cláusula `GROUP BY` para agrupar os resultados com base em `CODIGO_PRODUTO`, `PRODUTO`, `FOR_CODI` e `FORNECEDOR`.
 
 ## SCRIPT VW_ESTOQUE
 
