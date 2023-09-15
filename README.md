@@ -61,6 +61,43 @@ A subconsulta é usada para calcular o total de quantidades vendidas (`QUANTIDAD
 
 O resultado é agrupado por `PRO_CODI`, `PRO_DESC`, `EST_QUAN` e `VP.TAB_PRC1`. Isso é necessário porque estamos usando funções agregadas (`SUM`) e o campo `ESTOQUE_VALOR` no `SELECT`.
 
+## SCRIPT MÉDIA FATURAMENTO TRISMESTAL
+
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+## Propósito da Consulta
+
+O objetivo desta consulta SQL é calcular e agregar várias métricas para produtos vendidos em uma localização específica e com uma natureza de vendas específica. As principais métricas incluem a quantidade total de produtos vendidos dentro de um intervalo de datas específico, bem como a média de quantidade vendida nos últimos três meses antes de uma data especificada.
+
+## Campos da Consulta
+
+A consulta inclui os seguintes campos no conjunto de resultados:
+
+- `CODIGO_PRODUTO`: O identificador único do produto.
+- `PRODUTO`: O nome ou descrição do produto.
+- `QUANTIDADE`: A quantidade total do produto vendido dentro do intervalo de datas especificado, de 1 de setembro de 2023 a 30 de setembro de 2023.
+- `MEDIA_ULTIMO_TRIMESTRE`: A média da quantidade do produto vendida nos três meses anteriores ao intervalo de datas de 1 de junho de 2023 a 31 de agosto de 2023.
+- `FOR_CODI`: O identificador único do fornecedor do produto.
+- `FORNECEDOR`: O nome ou descrição do fornecedor.
+
+## Lógica da Consulta
+
+- A expressão `SUM(CASE ... END)` calcula a quantidade total de produtos vendidos (`QUANTIDADE`) dentro do intervalo de datas especificado (de 1 de setembro de 2023 a 30 de setembro de 2023).
+- A subconsulta calcula a soma das quantidades vendidas nos três meses de 1 de junho de 2023 a 31 de agosto de 2023 e armazena esse valor como `MEDIA_ULTIMO_TRIMESTRE`. Essa subconsulta está correlacionada com a consulta principal por meio da correspondência do `CODIGO_PRODUTO`.
+- A consulta filtra os dados com base nas seguintes condições:
+  - `LOCALIZACAO` é igual a '001'.
+  - `NATUREZA` é 'VEN' ou 'BOV'.
+- Os resultados são agrupados por `CODIGO_PRODUTO`, `PRODUTO`, `FOR_CODI`, `FORNECEDOR` e `SECAO` (embora `SECAO` seja mencionado na consulta, ele não está presente nos campos do resultado).
+
+Esta consulta fornece informações valiosas sobre as vendas de produtos em uma localização específica e natureza de vendas, permitindo análise das quantidades vendidas e das vendas médias ao longo do tempo.
+
+Observe que a consulta assume formatos de data específicos ('dd/mm/yyyy') e pode exigir ajustes com base nas configurações de formato de data do seu banco de dados.
+
+
 ## SCRIPT VW_ESTOQUE
 
 <div align="center">
