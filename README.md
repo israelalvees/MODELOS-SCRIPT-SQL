@@ -91,7 +91,7 @@ A consulta inclui os seguintes campos no conjunto de resultados:
 - A consulta filtra os dados com base nas seguintes condições:
   - `LOCALIZACAO` é igual a '001'.
   - `NATUREZA` é 'VEN' ou 'BOV'.
-- Os resultados são agrupados por `CODIGO_PRODUTO`, `PRODUTO`, `FOR_CODI`, `FORNECEDOR` e `SECAO` (embora `SECAO` seja mencionado na consulta, ele não está presente nos campos do resultado).
+- Os resultados são agrupados por `CODIGO_PRODUTO`, `PRODUTO`, `FOR_CODI`, `FORNECEDOR`.
 
 Esta consulta fornece informações valiosas sobre as vendas de produtos em uma localização específica e natureza de vendas, permitindo análise das quantidades vendidas e das vendas médias ao longo do tempo.
 
