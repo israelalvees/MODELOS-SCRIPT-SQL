@@ -2,6 +2,49 @@
 
     - Modelos variados que são utilizados no dia a dia por uma Analista de Dados. 
 
+## ANÁLISE DE CARTEIRA
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+Esta consulta SQL foi desenvolvida para analisar dados de uma carteira de crédito, com foco em métricas como saldo devedor, valor da parcela, acionamentos, alocações, CPCs (Contatos com a Pessoa Certa), entre outros. A análise é segmentada por data de inclusão e faixa de atraso.
+
+### CTEs (Common Table Expressions):
+
+1. **SaldoParcelaPorDATA:**
+   - CTE que calcula o saldo devedor e o valor da parcela agrupados por data de inclusão.
+
+### Principais Campos na Saída:
+
+- **DATA:** Data de inclusão dos registros.
+- **FAIXA_ATRASO:** Classificação da faixa de atraso com base nos dias de atraso.
+- **CARTEIRA_#:** Número de CPFs/CNPJs únicos na carteira.
+- **CARTEIRA_$:** Saldo máximo da carteira para cada data.
+- **ACIONAMENTOS_UNIQUE:** Número de CPFs/CNPJs únicos com acionamentos.
+- **ALO_UNIQUE:** Número de CPFs/CNPJs únicos com alocações.
+- **CPC_UNIQUE:** Número de CPFs/CNPJs únicos com CPCs.
+- **ACIONAMENTOS:** Número total de acionamentos.
+- **ALO:** Número total de alocações.
+- **CPC:** Número total de CPCs.
+- **ACORDOS:** Número total de acordos.
+- **PARCELA_$:** Valor máximo da parcela para cada data.
+- **ACORDOS_PAGOS:** Número total de acordos pagos.
+
+### Junções e Filtros:
+
+- A consulta realiza junções com a tabela `TB_BASE2` para obter a nomenclatura da carteira.
+- Filtros são aplicados para selecionar registros específicos da carteira e um intervalo de datas ('2023-11-01' a '2023-11-30').
+
+### Notas Adicionais:
+
+- A consulta utiliza uma estrutura de CASE para classificar as faixas de atraso.
+- As métricas são agrupadas por data de inclusão e faixa de atraso.
+- A ordem de saída é primeiro por data de inclusão e, em seguida, por faixa de atraso.
+
+Esta consulta fornece uma visão abrangente das métricas da carteira de crédito, permitindo uma análise detalhada dos principais indicadores ao longo do tempo e por diferentes faixas de atraso.
+
 ## CASE FAIXA IDADE
 
 <div align="center">
