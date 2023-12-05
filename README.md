@@ -1,4 +1,4 @@
-## MODELOS-SCRIPT-SQL
+# MODELOS-SCRIPT-SQL
 
     - Modelos variados que são utilizados no dia a dia por uma Analista de Dados. 
 
@@ -23,10 +23,10 @@ Esta consulta SQL foi desenvolvida para analisar dados de uma carteira de crédi
 - **CARTEIRA_#:** Número de CPFs/CNPJs únicos na carteira.
 - **CARTEIRA_$:** Saldo máximo da carteira para cada data.
 - **ACIONAMENTOS_UNIQUE:** Número de CPFs/CNPJs únicos com acionamentos.
-- **ALO_UNIQUE:** Número de CPFs/CNPJs únicos com alocações.
+- **ALO_UNIQUE:** Número de CPFs/CNPJs únicos com atendidos.
 - **CPC_UNIQUE:** Número de CPFs/CNPJs únicos com CPCs.
 - **ACIONAMENTOS:** Número total de acionamentos.
-- **ALO:** Número total de alocações.
+- **ALO:** Número total de atendidos.
 - **CPC:** Número total de CPCs.
 - **ACORDOS:** Número total de acordos.
 - **PARCELA_$:** Valor máximo da parcela para cada data.
