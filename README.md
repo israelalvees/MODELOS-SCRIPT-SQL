@@ -2,6 +2,17 @@
 
     - Modelos variados que são utilizados no dia a dia por uma Analista de Dados. 
 
+## CASE FAIXA IDADE
+
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+- Este CASE em SQL classifica a faixa etária com base na diferença de anos entre as datas DATA_NASCIMENTO e DATA_INCLUSAO. Cada condição WHEN representa uma faixa etária específica, e a faixa etária correspondente é atribuída à coluna resultante chamada FAIXA_IDADE.
+- No caso específico não havia uma coluna com a idade, por isso foi necessária a aplicação da lógica do DATEDIFF para calcular a idade em Anos.
+
 ## SCRIPT TEMPO DE ESTOQUE
 
 <div align="center">
