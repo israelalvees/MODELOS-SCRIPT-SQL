@@ -9,7 +9,7 @@
 </div>
 <br>
 
-Esta consulta SQL foi desenvolvida para analisar dados de uma carteira de crédito, com foco em métricas como saldo devedor, valor da parcela, acionamentos, alocações, CPCs (Contatos com a Pessoa Certa), entre outros. A análise é segmentada por data de inclusão e faixa de atraso.
+Esta consulta SQL foi desenvolvida para analisar dados de uma carteira de crédito, com foco em métricas como saldo devedor, valor da parcela, acionamentos, atendimentos, CPCs (Contatos com a Pessoa Certa), entre outros. A análise é segmentada por data de inclusão e faixa de atraso.
 
 ### CTEs (Common Table Expressions):
 
