@@ -53,8 +53,24 @@ Esta consulta fornece uma visão abrangente das métricas da carteira de crédit
 </div>
 <br>
 
-- Este CASE em SQL classifica a faixa etária com base na diferença de anos entre as datas DATA_NASCIMENTO e DATA_INCLUSAO. Cada condição WHEN representa uma faixa etária específica, e a faixa etária correspondente é atribuída à coluna resultante chamada FAIXA_IDADE.
-- No caso específico não havia uma coluna com a idade, por isso foi necessária a aplicação da lógica do DATEDIFF para calcular a idade em Anos.
+Este script SQL emprega a cláusula CASE para classificar a faixa etária com base na diferença de anos entre as datas DATA_NASCIMENTO e DATA_INCLUSAO. A lógica utiliza a função DATEDIFF para calcular a idade em anos. Cada condição WHEN representa uma faixa etária específica, e a faixa etária correspondente é atribuída à coluna resultante chamada FAIXA_IDADE.
+
+### Lógica de Classificação:
+
+- A cláusula CASE inclui múltiplas condições WHEN, cada uma representando uma faixa etária específica.
+- A função DATEDIFF(YEAR, DATA_NASCIMENTO, DATA_INCLUSAO) calcula a diferença em anos entre as datas de nascimento e inclusão.
+- As condições WHEN definem intervalos de diferença de anos para cada faixa etária.
+- A faixa etária correspondente é atribuída à coluna resultante chamada FAIXA_IDADE.
+
+### Exemplo de Faixas Etárias:
+
+- '0-17 anos': Diferença de anos entre 0 e 17.
+- '18-25 anos': Diferença de anos entre 18 e 25.
+- '26-35 anos': Diferença de anos entre 26 e 35.
+- '36-45 anos': Diferença de anos entre 36 e 45.
+- ...
+
+**Observação:** Este caso específico utiliza a lógica de cálculo da idade para classificar a faixa etária, uma vez que não havia uma coluna dedicada para essa informação no conjunto de dados.
 
 ## SCRIPT TEMPO DE ESTOQUE
 
