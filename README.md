@@ -78,6 +78,52 @@ Esta consulta fornece uma visão abrangente das métricas da carteira de crédit
 	- QUANTIDADE_VENDIDA: Quantidade total vendida do produto no período selecionado ('2023-01-01' a '2023-06-30'), calculada na subconsulta externa.
 	- RowNum: Número de linha usado para selecionar apenas o primeiro registro de cada produto.
 
+## SCRIPT RANK E VALOR VENDIDO:
+
+<div align="center">
+	
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=sql&logoColor=white)
+</div>
+<br>
+
+Esta consulta SQL é projetada para calcular o ranking de vendedores com base no valor total de vendas em um período específico. O resultado inclui informações como código do vendedor, nome, supervisor, valor vendido e o ranking atribuído de forma densa (sem pular posições).
+
+### Tabela Temporária: `RankedVendedores`
+
+A tabela temporária `RankedVendedores` é criada para realizar os cálculos necessários.
+
+- **Colunas Selecionadas:**
+    - `cod_vendedor`: Código do vendedor convertido para VARCHAR.
+    - `nome`: Nome do vendedor.
+    - `supervisor`: Categoria de supervisor com base no código do vendedor.
+    - `valor_vendido`: Valor total de vendas para o vendedor.
+    - `rank_vendas`: Ranking densamente atribuído com base no valor total de vendas em ordem decrescente.
+
+- **Join e Filtro:**
+    - `LEFT JOIN` com as tabelas `bi_vended` e `bi_vendas` usando o código do vendedor.
+    - Filtro de datas para incluir apenas vendas no período de '2023-01-01' a '2023-12-31'.
+
+- **Atribuição de Rank:**
+    - A função `DENSE_RANK()` é utilizada para atribuir um ranking sem pular posições, considerando a ordem decrescente do valor total de vendas.
+
+### Consulta Final
+
+A consulta final seleciona as colunas desejadas da tabela temporária e as apresenta ordenadas pelo valor vendido em ordem decrescente.
+
+- **Colunas Selecionadas:**
+    - `cod_vendedor`: Código do vendedor.
+    - `nome`: Nome do vendedor.
+    - `supervisor`: Categoria de supervisor.
+    - `valor_vendido`: Valor total de vendas.
+    - `rank_vendas`: Ranking densamente atribuído.
+
+- **Ordenação:**
+    - Os resultados são ordenados pelo valor vendido em ordem decrescente.
+
+**Observação:** Este script assume que as tabelas `bi_vended` e `bi_vendas` contêm as informações relevantes e estão corretamente relacionadas pelo código do vendedor.
+
+
+
 ## SCRIPT GIRO ESTOQUE VALOR
 <div align="center">
 	
