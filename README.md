@@ -64,19 +64,27 @@ Esta consulta fornece uma visão abrangente das métricas da carteira de crédit
 </div>
 <br>
 
-- Script SQL para calcular o tempo de estoque de produtos
-- Esta consulta retorna informações sobre produtos, incluindo o tempo estimado de estoque.
-- O tempo de estoque é calculado dividindo a quantidade disponível no estoque pela quantidade média vendida por semana no período desejado.
-- ROW_NUMBER() utilizado para atribuir um número sequencial a cada linha agrupada pelo código do produto (E.PRO_CODI). A cláusula PARTITION BY E.PRO_CODI garante que o número sequencial seja reiniciado para cada código de produto diferente.
-- Documentação:
-	- CODIGO_PRODUTO: Código do produto presente na tabela ESTOQUE e PRODUTO.
-	- DESCRICAO: Descrição do produto, presente na tabela PRODUTO.
-	- ESTOQUE_ATUAL: Quantidade atual em estoque do produto, presente na tabela ESTOQUE.
-	- TEMPO_ESTOQUE: Tempo estimado de estoque do produto, calculado na subconsulta interna.
-	- FORNECEDOR: Código do fornecedor do produto, presente na tabela PRODUTO.
-	- SECAO: Código da seção do produto, presente na tabela PRODUTO.
-	- QUANTIDADE_VENDIDA: Quantidade total vendida do produto no período selecionado ('2023-01-01' a '2023-06-30'), calculada na subconsulta externa.
-	- RowNum: Número de linha usado para selecionar apenas o primeiro registro de cada produto.
+Esta consulta SQL retorna informações sobre produtos, incluindo o tempo estimado de estoque. O tempo de estoque é calculado dividindo a quantidade disponível no estoque pela quantidade média vendida por semana no período desejado.
+
+### Tabela Temporária: `EstoqueComTempo`
+
+A tabela temporária `EstoqueComTempo` é criada para realizar os cálculos necessários.
+
+- **Colunas Selecionadas:**
+    - `CODIGO_PRODUTO`: Código do produto presente na tabela ESTOQUE e PRODUTO.
+    - `DESCRICAO`: Descrição do produto, presente na tabela PRODUTO.
+    - `ESTOQUE_ATUAL`: Quantidade atual em estoque do produto, presente na tabela ESTOQUE.
+    - `TEMPO_ESTOQUE`: Tempo estimado de estoque do produto, calculado na subconsulta interna.
+    - `FORNECEDOR`: Código do fornecedor do produto, presente na tabela PRODUTO.
+    - `SECAO`: Código da seção do produto, presente na tabela PRODUTO.
+    - `QUANTIDADE_VENDIDA`: Quantidade total vendida do produto no período selecionado ('2023-01-01' a '2023-06-30'), calculada na subconsulta externa.
+    - `RowNum`: Número de linha usado para selecionar apenas o primeiro registro de cada produto.
+
+- **Consulta Principal:**
+    - Seleciona as colunas desejadas da tabela temporária.
+    - Filtra os resultados para incluir apenas o primeiro registro de cada produto.
+
+**Observação:** Este script assume que as tabelas `ESTOQUE`, `PRODUTO`, `VENDA` e `DETALHE_VENDA` contêm as informações relevantes e estão corretamente relacionadas pelos códigos de produto e vendas.
 
 ## SCRIPT RANK E VALOR VENDIDO:
 
