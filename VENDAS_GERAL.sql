@@ -1,0 +1,35 @@
+SELECT 
+	V.COD_VEN AS ID_VENDA , 
+	V.DATA_VEN AS DATA , 
+		CASE EXTRACT(MONTH FROM V.DATA_VEN)
+				    WHEN 1 THEN 'Janeiro'
+		        WHEN 2 THEN 'Fevereiro'
+		        WHEN 3 THEN 'Março'
+		        WHEN 4 THEN 'Abril'
+		        WHEN 5 THEN 'Maio'
+		        WHEN 6 THEN 'Junho'
+		        WHEN 7 THEN 'Julho'
+		        WHEN 8 THEN 'Agosto'
+		        WHEN 9 THEN 'Setembro'
+		        WHEN 10 THEN 'Outubro'
+		        WHEN 11 THEN 'Novembro'
+		        WHEN 12 THEN 'Dezembro'
+			END AS MES , 
+	EXTRACT(YEAR FROM V.DATA_VEN) AS ANO , 
+	IV.COD_PRO ,
+	IV.NOME_PRODUTO ,
+	SUM((IV.QUANT - coalesce(IV.QUANT_TROCA, 0))) AS QUANT ,
+	SUM(((((IV.QUANT) * IV.VALOR) - coalesce(IV.DESCONTO, 0) + coalesce(IV.ACRESCIMO, 0)) - ((((coalesce(V.DESCONTO_VEN, 0) * 100) / coalesce(((V.TOTAL_VEN + 0.001) + coalesce(V.DESCONTO_VEN, 0)), 1)) * (((IV.QUANT) * IV.VALOR) - coalesce(IV.DESCONTO, 0))) / 100) + ((((coalesce(V.ACRESCIMO_VEN, 0) * 100) / coalesce(((V.TOTAL_VEN + 0.001) - coalesce(V.ACRESCIMO_VEN, 0)), 1)) * (((IV.QUANT) * IV.VALOR) + coalesce(IV.ACRESCIMO, 0))) / 100)))
+       AS TOTAL , 
+    SUM(IV.VALOR_CUSTO * (IV.QUANT - COALESCE(IV.QUANT_TROCA, 0))) AS  VALOR_CUSTO ,
+    V.COD_VEND ,
+    SG.DESCRICAO AS SUBCAT ,
+    S.NOME_SEC AS SECAO  
+FROM VENDAS v 
+INNER JOIN ITENS_VENDA iv ON V.COD_VEN = IV.COD_VEN 
+LEFT JOIN PRODUTO p ON P.COD_PRO = IV.COD_PRO 
+INNER JOIN SECAO S on P.COD_SEC = S.COD_SEC
+LEFT JOIN SECAO_GRUPO SG on P.COD_SEC = SG.COD_SEC and P.COD_GRUPO = SG.COD_GRUPO
+WHERE 1=1
+AND IV.CANCELADO = 0 AND IV.VENDA_CANCELADA = 0
+GROUP BY 1,2,4,5,6,10,11,12
